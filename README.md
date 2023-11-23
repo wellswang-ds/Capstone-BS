@@ -50,7 +50,7 @@ The dataset consists of:
 - the transactions data.
 
 We've cleaned and merged the datasets. Here's the merged columns after cleaning:
- #   Column                        Dtype  
+ id   Column                        Dtype  
 ---  ------                        -----  
  0   customer_id                   object 
  1   article_id                    int64  
