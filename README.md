@@ -1,44 +1,42 @@
-# Retail Analytics: fashion and apparel
+# Demand Forecasting and Trending Item Prediction for H&M Retail Sales
 Capstone Project for BrainStation Data Science Bootcamp
 ---
 
 ## The Problem Area
 
-Generic marketing campaigns may not resonate with individual customers. 
+Fast-fashion companies struggle to control inventory. 
 
-- Can we use information about previous purchases and customer demographics to predict customer lifetime value (CLV) and enable personalized marketing?
-- Are we able to predict which customer is going to purchase within the next 10 days?
-- Given a new customer, are we able to provide recommendations with the first few items they viewed?
+- By predicting trending items within a few days of launch, companies can respond to high demands in inventory. 
+- This project aims to utilize H&M sales data to predict trending items after a certain period since launch. By analyzing the sales history of H&M products, we can identify patterns and trends that can be used to make informed predictions about which products are likely to become popular in the future.
+- The fashion industry is constantly changing, and it can be difficult for companies to keep up with the latest trends. By predicting which products are likely to become popular, H&M can stay ahead of the competition and ensure that they are offering their customers the latest and most desirable products.
 
 ## The User
 
-The benefits of predicting CLV:
+The benefits of predicting trending items:
 
-- Retailers’ marketing approach could be more personalized with CLV predicted. (ex. targeted promotions, recommendations).
-- Retailers can target channels with high-CLV customers thus acquiring customers more efficiently.
-- Retailers can better segment customers by value and target different segments with diverse strategies.
+- Retailers’ marketing approach could be more personalized with trending items predicted. (ex. targeted promotions, recommendations).
+- We can understand the features of the trending items, and provide this information to the design, strategy team to improve customer loyalty.
+- Inventory management can be greatly improved as we can get a hint of what's going to be selling a lot.
 
 ## The Big Idea
 
-Predicting customer CLV is a classic yet crucial problem in the retail industry. The preliminary approach design for this project is to:
+To actually help with inventory management, we need to define a response time from ordering to re-stock. The assumption of the project has set the response time to 1 month. (i.e. we can predict an item would be trending in a month, then we can order more a month before)
 
-1. Grouping customers into segments (feature engineering) with RFM analysis (Recency, Frequency, Monetary).
-2. Predicting CLV with classic supervised machine learning models (ex. regression).
-3. Predicting CLV with deep learning models.
-4. Use CLV as a feature, to predict if a customer will purchase in a 10-day window
-5. (stretch a little bit here) For new customers, create a prompt where customers answer a few questions or select a few images, then provide purchase recommendations for them. (reinforcement learning?)
+We have 2 approach to this problem:
 
-**This is going to be modified!**
+1. Binary Classification: Given input of n days of sale of a product (with the features included), can we predict if it is going to reach a certain sales threshold (trending)?
+
+2. Demand Forecasting + Rule: We can create a lag 30 day time series prediction model. After the model is created, we can add rules to specify anomolies (trending sales).
+
 
 ## The Impact
 
-The predicted CLV can be used in many spectra:
+- Increased Sales and Revenue:
+By predicting trending items after a certain period since launch, H&M can ensure that they have enough stock to meet demand. This will lead to increased sales and revenue for the company.
 
-- Identifying high-CLV customers and tailored marketing may increase their spending by 10% to 30%
-- Customer lifetime extension by a few months may result in 5% to 15% increase in revenue
-- Target customer acquisition based on CLV predictions may reduce acquisition costs by 10%-20%
+- Improved Customer Satisfaction
+By having the trending items in stock, H&M can improve customer satisfaction by ensuring that customers can find what they are looking for. This will lead to increased customer loyalty and repeat business.
 
-On the other hand, with the custom recommendation system effective cross-selling may lead to a 5% to 15% boost in revenue as well as enhanced customer loyalty.
 
 ## The Data
 
@@ -51,9 +49,33 @@ The dataset consists of:
 - the customer data
 - the transactions data.
 
-Should the fashion and apparel data not work, a similar idea of CLV could be used on [this Instacart dataset](https://www.kaggle.com/c/instacart-market-basket-analysis/data).
+We've cleaned and merged the datasets. Here's the merged columns after cleaning:
+ #   Column                        Dtype  
+---  ------                        -----  
+ 0   customer_id                   object 
+ 1   article_id                    int64  
+ 2   unit_price                    float64
+ 3   units                         int64  
+ 4   sales_channel                 object 
+ 5   prod_name                     object 
+ 6   product_type_name             object 
+ 7   product_group_name            object 
+ 8   graphical_appearance_name     object 
+ 9   colour_group_name             object 
+ 10  perceived_colour_value_name   object 
+ 11  perceived_colour_master_name  object 
+ 12  department_name               object 
+ 13  index_name                    object 
+ 14  index_group_name              object 
+ 15  section_name                  object 
+ 16  garment_group_name            object 
+ 17  detail_desc                   object 
+ 18  FN                            bool   
+ 19  Active                        bool   
+ 20  club_member_status            object 
+ 21  fashion_news_frequency        object 
+ 22  age                           float64
+ 23  postal_code                   object 
+dtypes: bool(2), float64(2), int64(2), object(18)
+memory usage: 5.0+ GB
 
-## The Alternative
-
-- **Coffee shop recommendation**: Use computer vision to segment photos taken from a coffee shop (interior, food, coffee), and recommend a similar photo from a different coffee shop (recommendation based on “vibes” and products). (Might need a lot of data collection)
-- **Restaurant Sales and Weather**: Restaurant sales seem to be affected a lot by the weather. Are we able to estimate the traffic of certain venues considering the weather to support decision-making for merchants? (might need some web-scraping for the venue traffic, and data collection of the restaurant sales)
