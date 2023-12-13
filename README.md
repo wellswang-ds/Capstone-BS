@@ -50,32 +50,31 @@ The dataset consists of:
 - the transactions data.
 
 We've cleaned and merged the datasets. Here's the merged columns after cleaning:
- id   Column                        Dtype  
----  ------                        -----  
- 0   customer_id                   object 
- 1   article_id                    int64  
- 2   unit_price                    float64
- 3   units                         int64  
- 4   sales_channel                 object 
- 5   prod_name                     object 
- 6   product_type_name             object 
- 7   product_group_name            object 
- 8   graphical_appearance_name     object 
- 9   colour_group_name             object 
- 10  perceived_colour_value_name   object 
- 11  perceived_colour_master_name  object 
- 12  department_name               object 
- 13  index_name                    object 
- 14  index_group_name              object 
- 15  section_name                  object 
- 16  garment_group_name            object 
- 17  detail_desc                   object 
- 18  FN                            bool   
- 19  Active                        bool   
- 20  club_member_status            object 
- 21  fashion_news_frequency        object 
- 22  age                           float64
- 23  postal_code                   object 
-dtypes: bool(2), float64(2), int64(2), object(18)
-memory usage: 5.0+ GB
+| #   | Column                        | Dtype  |
+|---  | ------                        | -----  |
+| 0   | customer_id                   | object |
+| 1   | article_id                    | int64  |
+| 2   | unit_price                    | float64|
+| 3   | units                         | int64  |
+| 4   | sales_channel                 | object |
+| 5   | prod_name                     | object |
+| 6   | product_type_name             | object |
+| 7   | product_group_name            | object |
+| 8   | graphical_appearance_name     | object |
+| 9   | colour_group_name             | object |
+| 10  | perceived_colour_value_name   | object |
+| 11  | perceived_colour_master_name  | object |
+| 12  | department_name               | object |
+| 13  | index_name                    | object |
+| 14  | index_group_name              | object |
+| 15  | section_name                  | object |
+| 16  | garment_group_name            | object |
+| 17  | detail_desc                   | object |
+| 18  | FN                            | bool   |
+| 19  | Active                        | bool   |
+| 20  | club_member_status            | object |
+| 21  | fashion_news_frequency        | object |
+| 22  | age                           | float64|
+| 23  | postal_code                   | object |
+
 
