@@ -80,3 +80,5 @@ We've cleaned and merged the datasets. Here's the merged columns after cleaning:
 
 ## Project Workflow
 ![Project Workflow](Project_Flowchart.png)
+
+In this project we follow the flowchart above, went through data preprocessing phase to merge the data, feature engineering our target feature "trending", and constructed a baseline model with recall = 0.78.
