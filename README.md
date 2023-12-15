@@ -78,3 +78,5 @@ We've cleaned and merged the datasets. Here's the merged columns after cleaning:
 | 23  | postal_code                   | object |
 
 
+## Project Workflow
+![Project Workflow](Project_Flowchart.png)
