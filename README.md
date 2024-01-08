@@ -82,3 +82,57 @@ We've cleaned and merged the datasets. Here's the merged columns after cleaning:
 ![Project Workflow](Project_Flowchart.png)
 
 In this project we follow the flowchart above, went through data preprocessing phase to merge the data, feature engineering our target feature "trending", and constructed a baseline model with recall = 0.78.
+
+## Data Preprocessing, EDA, and Baseline Modelling
+
+In the first notebook, we've done data preprocessing, EDA, and baseline modelling with H&M sales data. Here are the analysis we've done:
+
+- Data Preprocessing
+  - **Articles (product) table**: dealing with coda/name pairs matching for product category related columns, missing values, duplicates.
+  - **Customers table**: dealing with missing values (imputation)and check for duplicates.
+  - **Transactions table**: dealing with missing values, duplicates, and transform the dataset based on our findings(we identified duplicated rows as purchasing multiple units and created a new column called units that aggregate the duplicates).
+
+- Exploratory Data Analysis
+  - **Preliminary EDA**: Analysed and visualized data based on numerical, categorical, and time series features.
+  - **Product EDA**: In-depth analysis on different product category related features, visualize data based on hierarchies, and further preprocessing to filter out irrelavant features/data.
+  - **Sales EDA (time series)**: Analyzed sales by week case-by-case with products. Selected 1 random product and the top selling product as case study. Visualized growth rate by week.
+
+- Feature Engineering
+  - **Target Variable Labelling**: Defined a function that identify "trending" for each product.
+  - **Product Table Aggregation**: Aggregate the product table with the created "trending" column as model input.
+  - **Input feature engineering**: With the product table, performed vectorization and one-hot encoding to the corresponding features.
+
+- Baseline Modelling
+  - Trained a logistic regression model as baseline
+  - Implemented imbalanced learning with SMOTE
+  - Evaluated the results and looked into feature importance
+
+## Advanced Modelling
+
+In the second notebook, we have continued our work with advanced modelling. Here are some details:
+
+- **Target Variable (Trending)**: Trending is defined as observing a high volume of sales combined with high week-over-week growth. We use specific thresholds to set precisely what 'high' means.
+
+- **Pipeline**: For efficiency purposes and reusability, we created a pipeline that wraps up all our feature engineering steps and modelling with column transformer and pipelines. We've also enabled GPU training with grid search and our pipelines.
+
+- **Modelling**: Train our models with the custom pipeline, do hyperparameter optimization with grid search. (Logistic Regression, SVM, XGBoost, and Random Forest)
+    - We've optimized the model with both recall and f1 score,
+    - For recall, we discovered that Logistic Regression, XGBoost, and SVM are having similar results (Logreg the best)
+    - For f1 score, we discovered that SVM has the highest score.  
+ 
+- **Word Embeddings**: We would like to see if word embeddings would out perform vectorization for our product description input. Here, we've used BERT pretrained model for embedding that. In our modelling, BERT is having similar results with the previous vevtorized input. However, we need to dive in more to validate that. We would delegate that to future works.
+
+- **Interpretable ML**: We've used shapely values to understand which features have high impact on predicting trending. We discovered that certain sections have higher positive/negative impact in predicting trending. We've used a function to take a glimpse into the product image of those sections.
+
+- **Case Studies**: We've implement the pipeline on training only for indivudual product type. We've seen the results change if we train only with certain product types. We've also viewed the shapely values for our case study, and discovered insights corresponding to each case.
+
+
+## Model Comparisons
+
+![Model Comparisons](model_comparison.png)
+
+The model comparison is shown above:
+
+- We've optimized the model with both recall and f1 score,
+- For recall, we discovered that Logistic Regression, XGBoost, and SVM are having similar results (Logreg the best)
+- For f1 score, we discovered that SVM has the highest score.  
