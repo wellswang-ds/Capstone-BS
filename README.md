@@ -2,6 +2,8 @@
 Capstone Project for BrainStation Data Science Bootcamp
 ---
 
+![Demo App](demo_app.png)
+
 ## The Problem Area
 
 Fast-fashion companies struggle to control inventory. 
